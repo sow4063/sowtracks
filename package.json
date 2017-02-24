@@ -1,17 +1,17 @@
 {
-  "name": "sowTracks",
-  "version": "0.0.1",
-  "description": "sjs music player platform",
+  "name": "sowtracks",
+  "version": "1.0.0",
+  "description": "sowtracks music player platform",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "start": "node server.js",
+    "start": "npm run build && nodemon server.js",
     "start:webpack": "webpack-dev-server"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sjsTracks/sjsTracks.git"
+    "url": "git+https://github.com/sow4063/sowtracks.git"
   },
   "keywords": [
     "music",
@@ -19,12 +19,12 @@
     "angularjs",
     "webpack"
   ],
-  "author": "Seunghoon, Songei, Sulbum, Jongeik",
+  "author": "Jongeik Lee",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/sjsTracks/sjsTracks/issues"
+    "url": "https://github.com/sow4063/sowtracks/issues"
   },
-  "homepage": "https://github.com/sjsTracks/sjsTracks#readme",
+  "homepage": "https://github.com/sow4063/sowtracks#readme",
   "devDependencies": {
     "babel-core": "^6.23.1",
     "babel-loader": "^6.3.2",
@@ -48,6 +48,7 @@
   },
   "dependencies": {
     "angular": "^1.6.2",
+    "angular-ui-router": "^0.4.2",
     "body-parser": "^1.16.1",
     "express": "^4.13.4",
     "mongoose": "^4.4",
