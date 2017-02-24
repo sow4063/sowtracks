@@ -51,6 +51,7 @@
     "angular-ui-router": "^0.4.2",
     "body-parser": "^1.16.1",
     "express": "^4.13.4",
+    "method-override": "^2.3.7",
     "mongoose": "^4.4",
     "q": "^1.4.1"
   }
