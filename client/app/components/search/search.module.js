@@ -8,13 +8,4 @@ export const SearchModule = angular
   	uiRouter
   ])
   .component('search', searchComponent)
-  // .config(($stateProvider, $urlRouterProvider) => {
-  //   'ngInject';
-  //   $stateProvider
-  //     .state('search', {
-  //       url: '/search',
-  //       component: 'search'
-  //     });
-  //   $urlRouterProvider.otherwise('/');
-  // })
   .name

@@ -4,8 +4,7 @@ import { SearchModule } from './search/search.module';
 
 export const ComponentsModule = angular
   .module('components', [
-  	SearchModule,
-  	uiRouter
+  	SearchModule
   ])
   .name
 
