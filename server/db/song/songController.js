@@ -64,8 +64,10 @@ module.exports = {
 
 	searchSong: function(req, res, next){
 
-    var condition = req.query.params.searchCondition;
-    var keyword = req.query.params.keyword.split('.')[0];
+    console.log('req =>>>>>>>>>>>>>>>>>>>>>>>', req.query);
+
+    var condition = req.query.searchCondition;
+    var keyword = req.query.keyword.split('.')[0];
 
     console.log('searchSong condition = ', condition );
     console.log('searchSong keyword = ', keyword );

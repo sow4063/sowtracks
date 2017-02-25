@@ -1,11 +1,27 @@
 import angular from 'angular'
 import uiRouter from 'angular-ui-router';
-import { searchComponent } from './search.component'
+import { SearchComponent } from './search.component'
+import { SearchService } from './search.service';
+import { SearchFormModule } from './search-form/search-form.module';
 import './search.scss'
 
 export const SearchModule = angular
   .module('search', [
+    SearchFormModule,
   	uiRouter
   ])
-  .component('search', searchComponent)
+  .component('search', SearchComponent)
+  .service('SearchService', SearchService)
+  .config( ($stateProvider, $urlRouterProvider) => {
+    'ngInject';
+    $stateProvider
+      .state('searches', {
+        url: '/searches',
+        component: 'search',
+        resolve: {
+        	searchData: SearchService => SearchService.getSearches()
+        }
+      });
+    $urlRouterProvider.otherwise('/');
+  })
   .name

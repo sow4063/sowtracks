@@ -25,7 +25,7 @@ describe('', function() {
   
   describe('Song Creation:', function() {
 
-    it('Remove a song', function(done) {
+    xit('Remove a song', function(done) {
       request(server)
         .post('/removesong')
         .send({title: song.title})
@@ -64,7 +64,7 @@ describe('', function() {
 
   }); // 'Song Insert'
 
-  describe('download music ', function(done){
+  xdescribe('download music ', function(done){
     it('downlaod the Song', function(done) {
       request(server)
         .get('/downlaodsong')
