@@ -18,7 +18,7 @@ export const SearchComponent = {
     		selected: 0 // 0: default - by title, 1: by artist
     	};
     	this.searches = [];
-    	this.searchService.getSearches().then( response => this.searches = response );
+    	//this.searchService.getSearches().then( response => this.searches = response );
     }
 
     $onChanges(changes) {

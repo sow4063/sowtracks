@@ -9,6 +9,6 @@ export const SearchFormModule = angular
   	uiRouter
   ])
   .component('searchForm', SearchFormComponent)
-  .value('EventEmitter', payload => ({$event: payload}))
+  //.value('EventEmitter', payload => ({$event: payload}))
   .value('EventEmitter', search => ({$event: search}))
   .name
