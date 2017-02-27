@@ -12,7 +12,7 @@ export class SearchService {
 		return this.$http({
       method: 'GET',
       url: '/searchsong',
-      params: {keyword: 'Encore.mp3', searchCondition: 'title'}
+      params: {keyword: '*', searchCondition: 'title'}
     })
     .then(function (resp) {
     	console.log('return data from server ==>>>>>>>>>> ', resp.data);

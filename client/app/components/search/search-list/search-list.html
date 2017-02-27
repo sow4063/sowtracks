@@ -1,5 +1,26 @@
 <div class="search-list">
-	searchList
+	
+	<!-- <div ng-if="$ctrl.searches.length > 0" >   
+    {{$ctrl.searches.length}} 건의 검색 결과가 있습니다.
+
+    <div ng-repeat="search in $ctrl.searches">
+			<div class="mdl-card__supporting-text">
+	      <h4>{{search.title}}</h4>
+	    </div>
+		</div>
+
+  </div>
+ -->
+  <label>
+    Search results:::
+  </label>
+  <ul>
+    <li
+      ng-repeat="song in $ctrl.searches">
+      <h4>{{song.title}} {{song.artist}} {{song.clicks}} {{song.created_at}}</h4>
+    </li>
+  </ul>
+	
 </div>
 
 

@@ -6,6 +6,7 @@ module.exports = function(app) {
 	// handle things like api calls
 	// authentication routes
 	app.get('/searchsong', songController.searchSong );
+	app.post('/insertsong', songController.insertSong );
 	
 	// frontend routes =========================================================
 	// route to handle all angular requests

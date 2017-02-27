@@ -1,3 +1,3 @@
 var mongoose = require('mongoose');
 
-module.exports = mongoose.connect('mongodb://localhost/sjstrack');
+module.exports = mongoose.connect('mongodb://localhost/sowtracks');

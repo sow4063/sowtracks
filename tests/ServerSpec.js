@@ -22,10 +22,19 @@ describe('', function() {
   song.songPath = '/Users/water4063/Documents/dev/music/upload/Encore.mp3';
 
   data.push(song);
+
+  var song2 = {};
+  song2.title = 'Finale.mp3';
+  song2.album = 'test';
+  song2.artist = 'sin';
+  song2.janre = 'classic';
+  song2.songPath = '/Users/water4063/Documents/dev/music/upload/Finale.mp3';
+
+  data.push(song2);
   
   describe('Song Creation:', function() {
 
-    xit('Remove a song', function(done) {
+    it('Remove a song', function(done) {
       request(server)
         .post('/removesong')
         .send({title: song.title})
@@ -36,7 +45,7 @@ describe('', function() {
         });
     });
 
-    it('Insert a new Song', function(done) {
+    it('Insert new songs', function(done) {
       request(server)
         .post('/insertsong')
         .send({'data': data})
@@ -47,7 +56,7 @@ describe('', function() {
     it('Search the Song', function(done) {
       request(server)
         .get('/searchsong')
-        .query({'params': {'keyword': song.title, 'searchCondition': 'title'} } )
+        .query({'keyword': song.title, 'searchCondition': 'title'}  )
         .end(function(err, res) {
           if( err ) {
             console.log('Error on search song = ', err );

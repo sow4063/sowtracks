@@ -74,12 +74,17 @@ module.exports = {
 
     var query = {};
 
-    if( condition === 'title' ) {
+    if( keyword === '*' ) {
+      query = {};
+    }
+    else if( condition === 'title' ) {
       query['title'] = { "$regex": keyword };
     }
     else if( condition === 'artist' ) {
       query['artist'] = { "$regex": keyword };
     }
+
+    console.log('query =>>>>>>>', query );
 
 		findSongs( query )
       .then(function(songs) {
