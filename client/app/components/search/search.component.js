@@ -15,8 +15,9 @@ export const SearchComponent = {
     $onInit() {
     	this.newSearch = {
     		keyword: '',
-    		selected: 0 // 0: default - by title, 1: by artist
+    		selected: 'title' // 0: default - by title, 1: by artist
     	};
+
     	this.searches = [];
     	//this.searchService.getSearches().then( response => this.searches = response );
     }
@@ -31,10 +32,10 @@ export const SearchComponent = {
     	console.log('search =>>>>>>>>>>>', search);
       if( !search ) return;
       //this.searches.unshift( search );
-      this.searchService.getSearches().then( response => this.searches = response );
+      this.searchService.getSearches(search.keyword, search.selected).then( response => this.searches = response );
       this.newSearch = {
         keyword: '',
-        selected: 0
+        selected: 'title'
       };
     }
   }

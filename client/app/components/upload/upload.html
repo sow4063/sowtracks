@@ -1,0 +1,6 @@
+<div class="upload">
+  <form enctype="multipart/form-data" data-ng-submit="$ctrl.uploadFiles()">
+    <input multiple type='file' name="userfile" onchange="angular.element(this).scope().$ctrl.getFileDetails(this)" />
+  	<button type ="submit">upload</button>
+  </form>
+</div>
