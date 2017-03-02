@@ -11,7 +11,7 @@ export const UploadModule = angular
   .component('upload', UploadComponent)
   //.value('EventEmitter', song => ({$event: song}))
   .service('UploadService', UploadService)
-  .config( ($stateProvider, $urlRouterProvider) => {
+  .config( ($stateProvider, $urlRouterProvider, $locationProvider) => {
     'ngInject';
     $stateProvider
       .state('files', {
@@ -21,6 +21,7 @@ export const UploadModule = angular
         	uploadData: UploadService => UploadService.postUpload()
         }
       });
+    $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise('/');
   })
   .name
