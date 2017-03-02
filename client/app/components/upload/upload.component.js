@@ -66,7 +66,7 @@ export const UploadComponent = {
     // GET THE FILE INFORMATION.
     getFileDetails(e) {
 
-      console.log('getFileDetails', e.files.length );
+      console.log('getFileDetails', e.files );
 
       this.files = [];
       
@@ -85,7 +85,8 @@ export const UploadComponent = {
       var data = new FormData();
 
       for( var file in this.files ) {
-        data.append("uploadfile", this.files[file].data );
+        let blob = new Blob([this.files[file]], { type: "audio/mp3"});
+        data.append("uploadfile", blob, this.files[file].name );
       }
 
       // ADD LISTENERS.
@@ -93,12 +94,12 @@ export const UploadComponent = {
       //objXhr.addEventListener("progress", updateProgress, false);
       //objXhr.addEventListener("load", transferComplete, false);
       
-      objXhr.setRequestHeader('X-Requested-With','XMLHttpRequest');
-
       // SEND FILE DETAILS TO THE API.
-      //objXhr.open("POST", "/upload");
-      objXhr.open("POST", "http://localhost:8080/upload", true );
+      objXhr.open("POST", "/upload");
+      //objXhr.open("POST", "http://localhost:8080/upload", true );
+      objXhr.setRequestHeader('X-Requested-With','XMLHttpRequest');
       objXhr.send( data );
+      
     }
 
     // UPDATE PROGRESS BAR.
