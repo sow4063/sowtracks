@@ -1,0 +1,6 @@
+<div class="download">
+  <form enctype="multipart/form-data" data-ng-submit="$ctrl.downloadFiles()">
+    <input multiple type='file' name="userfile" onchange="angular.element(this).scope().$ctrl.getFileDetails(this)" />
+  	<button type ="submit">download</button>
+  </form>
+</div>

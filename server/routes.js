@@ -19,7 +19,25 @@ module.exports = function(app) {
 	// server routes ===========================================================
 	// handle things like api calls
 	// authentication routes
-	app.get('/download', function(req, res){
+  
+  app.get('/download', function(req, res, next){
+    console.log('download req =>>>>>>>>>>>>>>>>>>>>>>>', req.query );
+    var filePath = 'uploads/Encore.mp3';
+
+    res.download( filePath, 'Encore.mp3', function(err){
+      if (err) {
+        // Handle error, but keep in mind the response may be partially-sent
+        // so check res.headersSent
+        console.log('error on res.download', err );
+      } else {
+        // decrement a download credit, etc.
+        console.log('success on res.download');
+      }
+    });
+
+  });
+
+	app.get('/stream', function(req, res){
 
     var filePath = 'uploads/Encore.mp3';
     var stat = fs.statSync( filePath );
@@ -39,7 +57,7 @@ module.exports = function(app) {
     });
 
     readStream.on('error', function(err) {
-    	console.log('error of readStream', err);
+    	console.log('error of readStream', err );
       res.end(err);
     });
 
