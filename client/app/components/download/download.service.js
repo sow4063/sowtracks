@@ -5,17 +5,6 @@ export class DownloadService {
 		this.$http = $http;
 	}
 
-  // Save as Code
-	saveAs(blob, fileName){
-	    var url = window.URL.createObjectURL(blob);
-
-	    var doc = document.createElement("a");
-	    doc.href = url;
-	    doc.download = fileName;
-	    doc.click();
-	    window.URL.revokeObjectURL(url);
-	}
-
 	getDownload(keyword, selected) {
 		console.log('	getDownooad =>>>>>>>.', keyword, selected);
 
@@ -27,19 +16,23 @@ export class DownloadService {
     })
     .then(function (resp) {
     	
-    	console.log('return data from server ==>>>>>>>>>> ', resp.data.length );
+    	console.log('return data from server ==>>>>>>>>>> ', resp );
+      console.log('Content-Disposition: ' + resp.headers('Content-Disposition'));
+
+    	var filename = resp.headers('Content-Disposition').match(/filename="(.+)"/)[1];
+
+    	// console.log('header =>> ', header );
+      console.log('filename =>> ', filename );
 
     	var blob = new Blob([resp.data], { type: "audio/mp3"} );
 
     	console.log('blob =>>>> ',  blob );
 
-      var fileName = 'Encore.mp3';
-
       var url = window.URL.createObjectURL(blob);
 
 	    var doc = document.createElement("a");
 	    doc.href = url;
-	    doc.download = fileName;
+	    doc.download = filename;
 	    doc.click();
 	    window.URL.revokeObjectURL(url);
       
