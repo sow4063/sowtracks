@@ -2,6 +2,7 @@ var fs = require('fs');
 var path = require('path');
 var songController = require('./db/song/songController.js');
 var multer = require('multer');
+var zip = require('express-zip');
 
 var _storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -21,19 +22,40 @@ module.exports = function(app) {
 	// authentication routes
   
   app.get('/download', function(req, res, next){
-    console.log('download req =>>>>>>>>>>>>>>>>>>>>>>>', req.query );
-    var filePath = 'uploads/Encore.mp3';
+    
+    console.log('download req =>>>>>>>>>>>>>>>>>>>>>>> ', req.query );
 
-    res.download( filePath, 'Encore.mp3', function(err){
-      if (err) {
-        // Handle error, but keep in mind the response may be partially-sent
-        // so check res.headersSent
-        console.log('error on res.download', err );
-      } else {
-        // decrement a download credit, etc.
-        console.log('success on res.download');
-      }
-    });
+    var files = [];
+
+    for( var song in req.query ) {
+
+      var filename = req.query[song];
+      var filePath = 'uploads/' + filename;
+      
+      console.log('filePath =>> ', filePath );
+      
+      let obj = {};
+      obj['path'] = filePath;
+      obj['name'] = filename;
+
+      files.push(obj);
+
+      // [ for single file ]
+      // res.download( filePath, filename, function(err){
+      //   if (err) {
+      //     // Handle error, but keep in mind the response may be partially-sent
+      //     // so check res.headersSent
+      //     console.log('error on res.download', err );
+      //   } else {
+      //     // decrement a download credit, etc.
+      //     console.log('success on res.download');
+      //   }
+      // });
+    }
+
+    console.log('files =>>>> ', files );
+    
+    res.zip( files );
 
   });
 

@@ -8,10 +8,16 @@ export class DownloadService {
 	getDownload(keyword, selected) {
 		console.log('	getDownooad =>>>>>>>.', keyword, selected);
 
+		var songs = [];
+		
+		songs.push('Encore.mp3');
+		songs.push('Finale.mp3');
+
 		return this.$http({
       method: 'GET',
       url: '/download',
-      params: {'keyword': 'Encore', 'searchCondition': selected},
+      //params: {'keyword': 'Encore', 'searchCondition': selected},
+      params: songs,
       responseType: 'blob' // blob, arraybuffer
     })
     .then(function (resp) {
