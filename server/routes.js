@@ -3,6 +3,7 @@ var path = require('path');
 var songController = require('./db/song/songController.js');
 var multer = require('multer');
 var zip = require('express-zip');
+var auth = require('./auth/auth.js');
 
 var _storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -19,7 +20,26 @@ module.exports = function(app) {
 
 	// server routes ===========================================================
 	// handle things like api calls
-	// authentication routes
+	
+  // authentication routes
+
+  // passport settings
+  require('./auth/passport.js').setup(app);
+
+  app.get('/account', auth.ensureAuthenticated, function(req, res, next) {
+    // res.render('account', {
+    //   title: 'Account',
+    //   name: req.user.displayName, // 패스포트를 통해 저장된 유저정보
+    //   user: JSON.stringify(req.user)
+    // });
+
+    res.send( {
+      title: 'Account',
+      name: req.user.displayName, // 패스포트를 통해 저장된 유저정보
+      user: JSON.stringify(req.user)
+    });
+
+  });
   
   app.get('/download', function(req, res, next){
     

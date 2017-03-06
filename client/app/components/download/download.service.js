@@ -12,6 +12,7 @@ export class DownloadService {
 		
 		songs.push('Encore.mp3');
 		songs.push('Finale.mp3');
+		songs.push('조각나비.mp3');
 
 		return this.$http({
       method: 'GET',

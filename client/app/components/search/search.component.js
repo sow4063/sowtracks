@@ -32,7 +32,9 @@ export const SearchComponent = {
     	console.log('search =>>>>>>>>>>>', search);
       if( !search ) return;
       //this.searches.unshift( search );
-      this.searchService.getSearches(search.keyword, search.selected).then( response => this.searches = response );
+      this.searchService.getSearches(search.keyword, search.selected)
+        .then( response => this.searches = response );
+      
       this.newSearch = {
         keyword: '',
         selected: 'title'
