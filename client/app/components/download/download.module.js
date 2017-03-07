@@ -1,12 +1,12 @@
 import angular from 'angular'
-import uiRouter from 'angular-ui-router';
+//import uiRouter from 'angular-ui-router';
 import { DownloadComponent } from './download.component'
 import { DownloadService } from './download.service';
 import './download.scss'
 
 export const DownloadModule = angular
   .module('download', [
-  	uiRouter
+  	//uiRouter
   ])
   .component('download', DownloadComponent)
   .service('DownloadService', DownloadService)

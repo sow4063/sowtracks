@@ -1,12 +1,12 @@
 import angular from 'angular'
-import uiRouter from 'angular-ui-router';
+//import uiRouter from 'angular-ui-router';
 import { UploadComponent } from './upload.component'
 import { UploadService } from './upload.service';
 import './upload.scss'
 
 export const UploadModule = angular
   .module('upload', [
-  	uiRouter
+  	//uiRouter
   ])
   .component('upload', UploadComponent)
   //.value('EventEmitter', song => ({$event: song}))

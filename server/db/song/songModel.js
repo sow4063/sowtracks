@@ -25,10 +25,6 @@ var songSchema = new mongoose.Schema({
 		type : Number, default: 1000
 	},
 
-	media : { 
-		data: Buffer, contentType: String 
-	},
-
 	created_at : { type: Date }
 
 });

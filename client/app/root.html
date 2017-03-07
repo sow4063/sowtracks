@@ -1,7 +1,6 @@
+<!-- ANGULAR DYNAMIC CONTENT -->
 <div class="root">
-  Test
-  <search></search>
-  <upload></upload>
-  <download></download>
+  <nav user="$ctrl.user" on-logout="$ctrl.logout();"></nav>
+  <div ui-view></div>
   <footer></footer>
 </div>

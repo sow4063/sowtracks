@@ -8,9 +8,9 @@ import './search.scss'
 
 export const SearchModule = angular
   .module('search', [
+    uiRouter,
     SearchFormModule,
-    SearchListModule,
-  	uiRouter
+    SearchListModule
   ])
   .component('search', SearchComponent)
   .service('SearchService', SearchService)
