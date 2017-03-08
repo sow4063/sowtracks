@@ -7,19 +7,22 @@ export const SearchComponent = {
   templateUrl,
   controller: class SearchComponent {
 
-    constructor(SearchService){
+    constructor(SearchService, $stateParams){
       'ngInject';
       this.searchService = SearchService;
+      this.$stateParams = $stateParams;
+      console.log('SearchCompoent constructor =>>>>>>>>>>>', this.$stateParams );
     }
 
-    $onInit() {
+    $onInit($stateParams) {
     	this.newSearch = {
     		keyword: '',
     		selected: 'title' // 0: default - by title, 1: by artist
     	};
 
     	this.searches = [];
-    	//this.searchService.getSearches().then( response => this.searches = response );
+      console.log('SearchComponent onInit =>>>>>>>>>> ', this.$stateParams );
+    	this.searchService.getSearches(this.$stateParams.keyword).then( response => this.searches = response );
     }
 
     $onChanges(changes) {

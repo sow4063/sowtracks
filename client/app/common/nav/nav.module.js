@@ -4,8 +4,8 @@ import { navComponent } from './nav.component';
 //import './nav.scss';
 
 export const NavModule = angular
-  .module('nav', [
+  .module('navs', [
   	uiRouter
   ])
-  .component('nav', navComponent)
+  .component('navs', navComponent)
   .name

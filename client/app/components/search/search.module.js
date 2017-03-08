@@ -18,11 +18,11 @@ export const SearchModule = angular
     'ngInject';
     $stateProvider
       .state('searches', {
-        url: '/searches',
+        url: '/searches/:keyword',
         component: 'search',
-        resolve: {
-        	searchData: SearchService => SearchService.getSearches()
-        }
+        // resolve: {
+        // 	searchData: SearchService => SearchService.getSearches()
+        // }
       });
     $urlRouterProvider.otherwise('/');
   })

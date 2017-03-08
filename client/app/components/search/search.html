@@ -1,7 +1,9 @@
-<div class="search">
-  <search-form
-    search="$ctrl.newSearch"
-    on-add-search="$ctrl.addSearch($event);"></search-form>
-  <search-list
-    searches="$ctrl.searches"></search-list>
+<div ui-view>
+	<div class="search" ng-if="$ctrl.searches.length > 0;">
+	  <search-form
+	    search="$ctrl.newSearch"
+	    on-add-search="$ctrl.addSearch($event);"></search-form>
+	  <search-list
+	    searches="$ctrl.searches"></search-list>
+	</div>
 </div>

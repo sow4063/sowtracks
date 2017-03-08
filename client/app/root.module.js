@@ -3,9 +3,9 @@ import uiRouter from 'angular-ui-router';
 import { rootComponent } from './root.component'
 import { ComponentsModule } from './components/components.module';
 import { CommonModule } from './common/common.module';
-//import { CommonModule } from './common/app.module';
-import './root.scss'
 
+import 'bootstrap/dist/css/bootstrap.css';
+import './root.scss';
 
 export const root = angular
   .module('root', [

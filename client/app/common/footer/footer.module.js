@@ -4,8 +4,8 @@ import { footerComponent } from './footer.component'
 import './footer.scss'
 
 export const FooterModule = angular
-  .module('footer', [
+  .module('footers', [
   	//uiRouter
   ])
-  .component('footer', footerComponent)
+  .component('footers', footerComponent)
   .name

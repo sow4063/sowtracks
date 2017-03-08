@@ -40,6 +40,13 @@ module.exports = env => {
             ]
           })
         },
+        { test: /\.(png|woff|woff2|eot|ttf|svg)$/, 
+          use: ExtractTextPlugin.extract({
+            use: [
+              { loader: `url-loader?limit=1000`, options: { sourceMap: true } }
+            ]
+          })
+        },
         {
           test: /\.js$/,
           exclude: `/node_modules/`,
@@ -56,15 +63,9 @@ module.exports = env => {
           context: path.resolve( PATHS.client, `img` ),
           from: `**/*`,
           to: path.resolve(PATHS.dist, `img`)
-        },
-        { 
-          context: path.resolve( PATHS.client, `sass` ),
-          from: `**/*`,
-          to: path.resolve(PATHS.dist, `sass`)
-        }  
+        }
       ]),
-      new ExtractTextPlugin(`[name].css`),
-      new ExtractTextPlugin(`[bane].scss`)
+      new ExtractTextPlugin(`[name].css`)
     ]
   };
 }
