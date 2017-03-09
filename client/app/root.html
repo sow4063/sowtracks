@@ -1,6 +1,13 @@
 <!-- ANGULAR DYNAMIC CONTENT -->
 <div class="root">
   <navs></navs>
-  <div ui-view></div>
+  <div ui-view>
+    <div ng-style="{ 
+      'background-image':'url(../img/dmb.jpg)', 
+      'height': '512px', width:'100%',
+      'background-repeat': 'no-repeat',
+      'background-size': '100%'}">
+		</div>
+  </div>
   <footers></footers>
 </div>

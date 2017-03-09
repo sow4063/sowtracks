@@ -40,7 +40,7 @@ module.exports = env => {
             ]
           })
         },
-        { test: /\.(png|woff|woff2|eot|ttf|svg)$/, 
+        { test: /\.(png|jpg|woff|woff2|eot|ttf|svg)$/, 
           use: ExtractTextPlugin.extract({
             use: [
               { loader: `url-loader?limit=1000`, options: { sourceMap: true } }
