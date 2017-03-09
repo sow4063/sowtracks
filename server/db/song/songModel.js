@@ -13,7 +13,7 @@ var songSchema = new mongoose.Schema({
 		type : String, default: ''
 	},
 	
-	janre : {
+	genre : {
 		type : String, default: ''
 	},
 	

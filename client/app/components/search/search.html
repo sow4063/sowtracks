@@ -1,9 +1,20 @@
 <div ui-view>
-	<div class="search" ng-if="$ctrl.searches.length > 0;">
+  <div class="row">
+	  <h1>Search Results </h1>
+	</div>
+	<div class="row">
+	  <div class="col-md-4">
+	    <search-form search="$ctrl.newSearch" on-add-search="$ctrl.addSearch($event);"></search-form>
+	  </div>
+    <div class="col-md-8">
+      <search-list searches="$ctrl.searches"></search-list>
+    </div>
+	</div>
+	<!-- <div class="search" ng-if="$ctrl.searches.length > 0;">
 	  <search-form
 	    search="$ctrl.newSearch"
 	    on-add-search="$ctrl.addSearch($event);"></search-form>
 	  <search-list
 	    searches="$ctrl.searches"></search-list>
-	</div>
+	</div> -->
 </div>

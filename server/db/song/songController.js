@@ -2,7 +2,8 @@ var fs = require('fs');
 var path = require('path');
 var Q = require('q');
 var song = require('./songModel.js');
-
+var mm = require('musicmetadata');
+ 
 // Promisify a few mongoose methods with the `q` promise library
 var findSongs  = Q.nbind( song.find, song );
 var createSong = Q.nbind( song.create, song );
@@ -88,9 +89,10 @@ module.exports = {
 
 		findSongs( query )
       .then(function(songs) {
-      	if( songs.length ) {
-      		console.log('songs exists!!! ::: ', songs.length );
-          res.send( songs );
+      	console.log('found songs ::: ', songs.length );
+          
+        if( songs.length ) {
+      		res.send( songs );
         } 
         else {
           res.json( [] );
@@ -119,41 +121,75 @@ module.exports = {
   },
 
 	insertSong: function (req, res, next) {
-
+   
     var songs = [];
 
-    console.log('req.body.data => ', req.body.data );
+    for( let i = 0; i < req.files.length; i++ ) {
 
-    for( var i = 0; i < req.body.data.length; i++ ) {
-      let input = req.body.data[i];
+      let file = req.files[i];
       let song = {};
 
-      song.title = input.title;
-      song.album = input.album;
-      song.artist = input.artist;
-      song.janre = input.janre;
+      /*
+      var rs = fs.createReadStream("some large file")
+      .on("data", function(data){
+          console.log("got data");
+          l += data.length;
+          if (l > 655360) {
+              rs.close();
+              console.log("close");
+          }
+      })
+      .on("end", function(){
+          console.log("shouldn't be logged");
+      });
+      */
       
-      let songPath = input.songPath;
-      song.media = {};
+      var readableStream = fs.createReadStream( file.path );
+
+      var parser = mm( readableStream, function (err, metadata) {
+
+        if( err ) {
+          console.log('err read metadata ', err );
+        }
+        else {
+          //console.log('metadata =>>> ', metadata );
+
+          song.title = metadata.title;
+          song.album = metadata.album;
+          song.artist = metadata.artist.join('');
+          song.genre = metadata.genre.join('');
+
+          createSong( song )
+            .then(function(result){
+              console.log('insert result = ', result );
+              //res.status(200).json( result );
+            })
+            .fail(function(error){
+              console.log('insertSong = ', error );
+              //return res.status(500).json( error );
+            });
+          
+          songs.push(song);
+          console.log('i th =>>>>>> ', i );
+        }
+
+        //readableStream.close();
+      }); // parser
+      
+    } // for all files
+
+    console.log('insertSong = ', songs.length );
+
+    // createSong( songs )
+	   //  .then(function(result){
+    //     console.log('insert result = ', result );
+	   //    res.status(200).json( result );
+	   //  })
+	   //  .fail(function(error){
+    //     console.log('insertSong = ', error );
+	   //    res.status(500).json( error );
+	   //  });
     
-      song.media['data'] = fs.readFileSync( songPath );
-      song.media.contentType = 'audio/mp3';//path.extname( songPath );
-
-      songs.push(song);
-    }
-
-		console.log('insertSong = ', songs.length );
-
-    createSong( songs )
-	    .then(function(result){
-        console.log('insert result = ', result)
-	      res.json( result );
-	    })
-	    .fail(function(error){
-        console.log('insertSong = ', error );
-	      res.json( error );
-	    });
-    
-  }
+  } // insertSong
   
 };

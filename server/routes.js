@@ -107,8 +107,10 @@ module.exports = function(app) {
 	
 	app.get('/searchsong', songController.searchSong );
 	app.post('/insertsong', songController.insertSong );
-	app.post('/upload', upload.array('uploadfile', 10), function(req, res) {    
+	app.post('/upload', upload.array('uploadfile', 20), function(req, res) {    
 		console.log("upload.array => ", req.files );
+    //res.status(200).send( "upload success message from server ===>>>>>>>>>>>>" );
+    songController.insertSong(req, res);
     res.status(200).send( "upload success message from server ===>>>>>>>>>>>>" );
   });
 	
