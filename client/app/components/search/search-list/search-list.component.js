@@ -11,11 +11,15 @@ export const SearchListComponent = {
       'ngInject';
     }
 
+    $onInit() {
+      this.searches = [];
+    }
+
     $onChanges(changes) {
       console.log('changes', this.searches );
       if( changes.searches ) {
         console.log('changes.searches', this.searches );
-        this.searches = Object.assign({}, this.searches) || {song:'testsong'};
+        this.searches = Object.assign({}, this.searches);
         console.log('after saving changes.searches', this.searches );
       }
     }

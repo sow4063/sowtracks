@@ -1,13 +1,58 @@
 <div class="search-list">
 	
-	<label>
-    Search results:::
-  </label>
+  <div ng-if=" ($ctrl.searches | filter: '').length > 0">
+    <h2>검색결과 {{ ($ctrl.searches | filter: '').length }} 건이 있습니다.</h2>
+  </div>
+
+  <div ng-show=" ($ctrl.searches | filter: '').length === 0">
+    <h2>검색 결과가 없습니다.</h2>
+  </div>
+
   <ul>
+  
     <li
-      ng-repeat="song in $ctrl.searches">
-      <h4>{{song.title}} {{song.artist}} {{song.clicks}} {{song.created_at}}</h4>
+      ng-repeat="song in $ctrl.searches" 
+      ng-style="
+      { 'background-color': 'white', 
+        'margin': '10px 10px 10px 10px',
+        'padding': '10px',
+        'list-style-type': 'none'
+      }">
+
+      <div 
+        class="row card" 
+        style="width: 70rem;">
+
+        <div class="col-md-2">
+          <div ng-style="{ 
+            'background-image':'url(./dmb.jpg)', 
+            'height': '50px', width:'100%',
+            'background-repeat': 'no-repeat',
+            'background-size': '100%'}">
+          </div>
+          <a href="#" class="btn-primary">play</a>
+        </div>
+
+        <div class="col-md-8">
+          <div class="card-block">
+            <h4 class="card-title">{{song.title}}</h4>
+            <p class="card-text">{{song.artist}}</p>
+          </div>
+        </div>
+        
+        <div class="col-md-2">
+          <!-- <a href="#" class="btn btn-primary">cart</a> -->
+          <a href="#" class="btn">cart</a>         
+        </div>
+
+      </div>
+
+      <hr>
+
     </li>
+
+
+
   </ul>
 	
 </div>

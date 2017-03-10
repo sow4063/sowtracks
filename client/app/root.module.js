@@ -5,7 +5,7 @@ import { ComponentsModule } from './components/components.module';
 import { CommonModule } from './common/common.module';
 
 import 'bootstrap/dist/css/bootstrap.css';
-import './root.scss';
+//import './root.scss';
 
 export const root = angular
   .module('root', [
