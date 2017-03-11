@@ -32,11 +32,12 @@ module.exports = env => {
           use: [`ngtemplate-loader`, `html-loader`]
         },
         {
-          test: /(\.css|\.scss)$/,
+          test: /(\.css|\.scss|\.less)$/,
           use: ExtractTextPlugin.extract({
             use: [
               { loader: `css-loader`, options: { sourceMap: true } },
               { loader: `sass-loader`, options: { sourceMap: true } },
+              { loader: `less-loader`, options: { sourceMap: true } },
             ]
           })
         },
