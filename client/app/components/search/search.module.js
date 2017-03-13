@@ -4,7 +4,7 @@ import { SearchComponent } from './search.component'
 import { SearchService } from './search.service';
 import { SearchFormModule } from './search-form/search-form.module';
 import { SearchListModule } from './search-list/search-list.module';
-//import './search.scss'
+import './search.scss'
 
 export const SearchModule = angular
   .module('search', [
