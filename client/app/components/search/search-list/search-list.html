@@ -1,10 +1,10 @@
-<div class="search-list">
-	
-  <div ng-if=" ($ctrl.searches | filter: '').length > 0">
-    <h2>검색결과 {{ ($ctrl.searches | filter: '').length }} 건이 있습니다.</h2>
+<div>
+
+  <div ng-if="$searches.length !== 0;">
+    <h2>검색결과 {{ $searches.length }} 건이 있습니다.</h2>
   </div>
 
-  <div ng-show=" ($ctrl.searches | filter: '').length === 0">
+  <div ng-if="$ctrl.count === 0;">
     <h2>검색 결과가 없습니다.</h2>
   </div>
 
@@ -24,15 +24,12 @@
         style="width: 70rem;">
 
         <div class="col-md-2">
-          <div ng-style="{ 
-            'background-image':'url(../../../img/dmb.jpg)', 
-            'height': '120px', width:'100px',
-            'background-repeat': 'no-repeat',
-            'background-size': '100%'}">
-            <a href="#" id="audioControl">
-              <span class="glyphicon glyphicon-play-circle"></span>
-            </a>
-          </div>
+          <img ng-src="/imgdown/{{song.picture}}" 
+               ng-style="{ 
+                'height': '120px', width:'100px',
+                'background-repeat': 'no-repeat',
+                'background-size': '100%'}"
+          />
           
         </div>
 
@@ -54,7 +51,5 @@
     </li>
 
   </ul>
-  	
+
 </div>
-
-

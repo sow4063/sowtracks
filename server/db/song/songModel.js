@@ -25,6 +25,10 @@ var songSchema = new mongoose.Schema({
 		type : Number, default: 1000
 	},
 
+	picture : {
+		type : String, default: ''
+	},
+
 	created_at : { type: Date }
 
 });

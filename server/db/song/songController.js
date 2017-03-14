@@ -92,7 +92,7 @@ module.exports = {
       	console.log('found songs ::: ', songs.length );
           
         if( songs.length ) {
-      		res.send( songs );
+          res.json( songs );
         } 
         else {
           res.json( [] );
@@ -122,7 +122,7 @@ module.exports = {
 
 	insertSong: function (req, res, next) {
    
-    var songs = [];
+    //var songs = [];
 
     for( let i = 0; i < req.files.length; i++ ) {
 
@@ -152,12 +152,21 @@ module.exports = {
           console.log('err read metadata ', err );
         }
         else {
-          //console.log('metadata =>>> ', metadata );
+          console.log('metadata =>>> ', metadata );
 
           song.title = metadata.title;
           song.album = metadata.album;
           song.artist = metadata.artist.join('');
           song.genre = metadata.genre.join('');
+          
+          // save image
+          var picName = song.title + '.' + metadata.picture[0].format ;
+          song.picture = picName;
+
+          // fs.writeFileSync( picPath, metadata.picture[0].data );
+          // song.picture = {};
+          // song.picture.contentType = metadata.picture[0].format;
+          // song.picture.data = metadata.picture[0].data;
 
           createSong( song )
             .then(function(result){
@@ -169,7 +178,7 @@ module.exports = {
               //return res.status(500).json( error );
             });
           
-          songs.push(song);
+          //songs.push(song);
           console.log('i th =>>>>>> ', i );
         }
 
@@ -178,7 +187,7 @@ module.exports = {
       
     } // for all files
 
-    console.log('insertSong = ', songs.length );
+    //console.log('insertSong = ', songs.length );
 
     // createSong( songs )
 	   //  .then(function(result){

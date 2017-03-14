@@ -7,22 +7,22 @@ export const SearchListComponent = {
   },
   templateUrl,
   controller: class SearchListComponent {
-    constructor() {
+    constructor($http) {
       'ngInject';
+      this.$http = $http;
     }
 
-    $onInit() {
-      this.searches = [];
-    }
+    // $onInit() {
+    //   this.searches = [];
+    //   this.count = 0;
+    // }
 
-    $onChanges(changes) {
-      console.log('changes', this.searches );
-      if( changes.searches ) {
-        console.log('changes.searches', this.searches );
-        this.searches = Object.assign({}, this.searches);
-        console.log('after saving changes.searches', this.searches );
-      }
-    }
+    // $onChanges(changes) {
+    //   if( changes.searches ) {
+    //     this.searches = Object.assign({}, this.searches );
+    //     console.log('after saving changes.searches', this.searches );
+    //   }
+    // }
     
   }
 };

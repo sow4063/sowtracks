@@ -43,6 +43,7 @@ export const SearchComponent = {
         selected: 'title'
       };
     }
+
   }
 };
 

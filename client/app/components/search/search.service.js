@@ -17,8 +17,9 @@ export class SearchService {
       params: {'keyword': keyword, searchCondition: condition}
     })
     .then(function (resp) {
-    	console.log('return data from server ==>>>>>>>>>> ', resp.data);
+    	console.log('getSearches return from server ==>>>>>>>>>> ', resp.data );
       return resp.data;
     });
 	}
+  
 }

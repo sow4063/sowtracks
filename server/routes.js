@@ -40,6 +40,27 @@ module.exports = function(app) {
     });
 
   });
+
+  app.get('/imgdown/:id', function(req, res, next){
+    
+    console.log('download image req =>>>>>>>>>>>>>>>>>>>>>>> ', req.params );
+
+    var filename = req.params.id;
+    var filePath = 'uploads/img/' + filename;
+
+    //[ for single file ]
+    res.download( filePath, filename, function(err){
+      if( err ) {
+        // Handle error, but keep in mind the response may be partially-sent
+        // so check res.headersSent
+        console.log('error on res.download of a image', err );
+      } else {
+        // decrement a download credit, etc.
+        console.log('success on res.download of a image');
+      }
+    });
+
+  });
   
   app.get('/download', function(req, res, next){
     
