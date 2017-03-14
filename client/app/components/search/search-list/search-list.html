@@ -11,7 +11,7 @@
   <ul>
   
     <li
-      ng-repeat="song in $ctrl.searches" 
+      ng-repeat="song in $ctrl.searches | orderBy: 'title'" 
       ng-style="
       { 'background-color': 'white', 
         'margin': '10px 10px 10px 10px',
@@ -19,18 +19,17 @@
         'list-style-type': 'none'
       }">
 
-      <div 
-        class="row card" 
-        style="width: 70rem;">
+      <div class="row card" style="width: 70rem;">
 
         <div class="col-md-2">
           <img ng-src="/imgdown/{{song.picture}}" 
                ng-style="{ 
                 'height': '120px', width:'100px',
                 'background-repeat': 'no-repeat',
-                'background-size': '100%'}"
-          />
-          
+                'background-size': '100%'}"/>
+            <a href="#" id="audioControl">
+               <span class="glyphicon glyphicon-play-circle"></span>
+            </a>
         </div>
 
         <div class="col-md-8">
