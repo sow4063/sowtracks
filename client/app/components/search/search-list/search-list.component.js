@@ -7,23 +7,19 @@ export const SearchListComponent = {
   },
   templateUrl,
   controller: class SearchListComponent {
-    constructor($http) {
+    constructor($http, Store) {
       'ngInject';
       this.$http = $http;
+      
+      this.onPlay = (title) => {
+        // BOOM! We just set the Store data.
+        // No need to notify or anything!
+        Store.set({ song: title });
+      };
+      
     }
 
-    // $onInit() {
-    //   this.searches = [];
-    //   this.count = 0;
-    // }
-
-    // $onChanges(changes) {
-    //   if( changes.searches ) {
-    //     this.searches = Object.assign({}, this.searches );
-    //     console.log('after saving changes.searches', this.searches );
-    //   }
-    // }
-    
   }
+
 };
 

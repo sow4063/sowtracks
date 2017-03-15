@@ -100,10 +100,14 @@ module.exports = function(app) {
 
   });
 
-	app.get('/stream', function(req, res){
+	app.get('/stream/:id', function(req, res){
 
-    var filePath = 'uploads/Encore.mp3';
+    console.log('stream song req =>>>>>>>>>>>>>>>>>>>>>>> ', req.params );
+
+    var filename = req.params.id;
+    var filePath = 'uploads/' + filename;
     var stat = fs.statSync( filePath );
+    
     console.log('stat => ', filePath, stat );
 
     res.writeHead( 200, {

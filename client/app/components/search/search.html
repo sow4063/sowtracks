@@ -17,13 +17,12 @@
 	</div>
 
 	<!-- 재생 버튼 -->
-  <audio id="audioplayer" src="media/evidence-song.mp3" type="audio/mp3" controls autoplay></audio>
-
-	<!-- <div class="search" ng-if="$ctrl.searches.length > 0;">
-	  <search-form
-	    search="$ctrl.newSearch"
-	    on-add-search="$ctrl.addSearch($event);"></search-form>
-	  <search-list
-	    searches="$ctrl.searches"></search-list>
-	</div> -->
+  <audio ng-show="$ctrl.state.song.length !== 0;"
+    id="audioplayer" 
+    src="/stream/{{$ctrl.state.song}}" 
+    type="audio/mp3" 
+    controls="controls"
+    autoplay>	
+  </audio>
+  
 </div>

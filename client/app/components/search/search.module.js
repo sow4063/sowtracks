@@ -26,4 +26,24 @@ export const SearchModule = angular
       });
     $urlRouterProvider.otherwise('/');
   })
+  // declare the "Store" or whatever name that make sense
+  // for you to call it (Model, State, etc.)
+  .factory('Store', () => {
+    // hold a local copy of the state, setting its defaults
+    const state = {
+        data: {
+          song: ''
+        }
+    };
+
+    // expose basic getter and setter methods
+    return {
+      get() {
+        return state.data;
+      },
+      set(data) {
+        Object.assign( state.data, data );
+      },
+    };
+  })
   .name

@@ -154,16 +154,16 @@ module.exports = {
         else {
           console.log('metadata =>>> ', metadata );
 
-          song.title = metadata.title;
+          song.title = file.filename;
           song.album = metadata.album;
           song.artist = metadata.artist.join('');
           song.genre = metadata.genre.join('');
           
           // save image
-          var picName = song.title + '.' + metadata.picture[0].format ;
+          var picName = song.title + '.' + metadata.picture[0].format;
           song.picture = picName;
 
-          // fs.writeFileSync( picPath, metadata.picture[0].data );
+          fs.writeFileSync( 'uploads/img/' + picName, metadata.picture[0].data );
           // song.picture = {};
           // song.picture.contentType = metadata.picture[0].format;
           // song.picture.data = metadata.picture[0].data;

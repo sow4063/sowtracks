@@ -1,10 +1,10 @@
 <div>
 
-  <div ng-if="$searches.length !== 0;">
-    <h2>검색결과 {{ $searches.length }} 건이 있습니다.</h2>
+  <div ng-if="searches.length !== 0;">
+    <h2>검색결과 {{ $ctrl.searches.length }} 건이 있습니다.</h2>
   </div>
 
-  <div ng-if="$ctrl.count === 0;">
+  <div ng-if="searches.length === 0;">
     <h2>검색 결과가 없습니다.</h2>
   </div>
 
@@ -22,19 +22,22 @@
       <div class="row card" style="width: 70rem;">
 
         <div class="col-md-2">
-          <img ng-src="/imgdown/{{song.picture}}" 
-               ng-style="{ 
-                'height': '120px', width:'100px',
-                'background-repeat': 'no-repeat',
-                'background-size': '100%'}"/>
-            <a href="#" id="audioControl">
-               <span class="glyphicon glyphicon-play-circle"></span>
-            </a>
+          <img 
+            ng-src="/imgdown/{{song.picture}}" 
+            ng-style="{ 
+              'display': 'inline-block',
+              'height': '120px', width:'100px',
+              'background-repeat': 'no-repeat',
+              'background-size': '100%'}"/>
+            <span 
+              class="glyphicon glyphicon-play-circle" 
+              ng-click="$ctrl.onPlay(song.title)">
+            </span>
         </div>
 
         <div class="col-md-8">
           <div class="card-block">
-            <h4 class="card-title">{{song.title}}</h4>
+            <h4 class="card-title">{{song.title.split('.mp3')[0]}}</h4>
             <p class="card-text">{{song.artist}}</p>
           </div>
         </div>

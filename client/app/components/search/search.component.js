@@ -7,10 +7,11 @@ export const SearchComponent = {
   templateUrl,
   controller: class SearchComponent {
 
-    constructor(SearchService, $stateParams){
+    constructor(SearchService, $stateParams, Store){
       'ngInject';
       this.searchService = SearchService;
       this.$stateParams = $stateParams;
+      this.state = Store.get();
       console.log('SearchCompoent constructor =>>>>>>>>>>>', this.$stateParams );
     }
 
@@ -26,6 +27,7 @@ export const SearchComponent = {
     }
 
     $onChanges(changes) {
+      console.log('changes =>>>>> ', changes );
     	if( changes.searchData ) {
         this.searches = Object.assign({}, this.searchData);
     	}
