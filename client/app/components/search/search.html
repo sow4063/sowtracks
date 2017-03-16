@@ -1,28 +1,29 @@
 <div ui-view
   ng-style="
-    { 'background-color': 'white', 
-      'height': '500px', width:'100%',
+    { 'background-color': 'Gainsboro', 
+      'height': '100%', width:'100%',
     }"
 >
-  <div class="row">
+  <div class="row" style="margin-left: 10px; background-color: white; color: orange">
 	  <h1>  Search Results </h1>
 	</div>
-	<div class="row">
-	  <div class="col-md-4">
+
+	<div class="row" style="margin-left: 3px">
+	  <div class="col-md-3">
 	    <search-form search="$ctrl.newSearch" on-add-search="$ctrl.addSearch($event);"></search-form>
 	  </div>
-    <div class="col-md-8">
+    <div class="col-md-9">
       <search-list searches="$ctrl.searches"></search-list>
     </div>
 	</div>
 
 	<!-- 재생 버튼 -->
-  <audio ng-show="$ctrl.state.song.length !== 0;"
-    id="audioplayer" 
+  <audio 
+    id="audioplayer"
     src="/stream/{{$ctrl.state.song}}" 
     type="audio/mp3" 
     controls="controls"
-    autoplay>	
+    autoplay> 
   </audio>
   
 </div>

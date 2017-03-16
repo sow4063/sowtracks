@@ -8,14 +8,14 @@
     <h2>검색 결과가 없습니다.</h2>
   </div>
 
-  <ul>
+  <ul style="padding-left: 0px">
   
     <li
       ng-repeat="song in $ctrl.searches | orderBy: 'title'" 
       ng-style="
       { 'background-color': 'white', 
-        'margin': '10px 10px 10px 10px',
-        'padding': '10px',
+        'margin': '4px',
+        'padding': '1px',
         'list-style-type': 'none'
       }">
 
@@ -26,11 +26,11 @@
             ng-src="/imgdown/{{song.picture}}" 
             ng-style="{ 
               'display': 'inline-block',
-              'height': '120px', width:'100px',
+              'height': '110px', width:'110px',
               'background-repeat': 'no-repeat',
               'background-size': '100%'}"/>
             <span 
-              class="glyphicon glyphicon-play-circle" 
+              class="glyphicon glyphicon-play-circle"
               ng-click="$ctrl.onPlay(song.title)">
             </span>
         </div>
@@ -42,13 +42,11 @@
           </div>
         </div>
         
-        <div class="col-md-2">
-          <a href="#" class="btn btn-primary">cart</a>         
+        <div class="col-md-1">
+          <a href="#" class="btn glyphicon glyphicon-shopping-cart">cart</a> 
         </div>
 
       </div>
-
-      <hr>
 
     </li>
 
