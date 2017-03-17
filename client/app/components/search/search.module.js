@@ -25,6 +25,7 @@ export const SearchModule = angular
         // }
       });
     $urlRouterProvider.otherwise('/');
+    
   })
   // declare the "Store" or whatever name that make sense
   // for you to call it (Model, State, etc.)

@@ -1,0 +1,47 @@
+<div>
+
+  <ul style="padding-left: 10px">
+  
+    <li
+      ng-repeat="song in $ctrl.chart | orderBy: 'clicks'" 
+      ng-style="
+      { 'background-color': 'white', 
+        'margin': '15px',
+        'padding': '15px',
+        'list-style-type': 'none'
+      }">
+
+      <div class="row card" style="width: 70rem;">
+
+        <div class="col-md-2">
+          <img 
+            ng-src="/imgdown/{{song.picture}}" 
+            ng-style="{ 
+              'display': 'inline-block',
+              'height': '110px', width:'110px',
+              'background-repeat': 'no-repeat',
+              'background-size': '100%'}"/>
+            <span 
+              class="glyphicon glyphicon-play-circle"
+              ng-click="$ctrl.onPlay(song.title)">
+            </span>
+        </div>
+
+        <div class="col-md-9">
+          <div class="card-block">
+            <h4 class="card-title">{{song.title.split('.mp3')[0]}}</h4>
+            <p class="card-text">{{song.artist}}</p>
+          </div>
+        </div>
+        
+        <div class="col-md-1">
+          <a href="#" class="btn glyphicon glyphicon-shopping-cart">cart</a> 
+        </div>
+
+      </div>
+
+    </li>
+
+  </ul>
+
+</div>

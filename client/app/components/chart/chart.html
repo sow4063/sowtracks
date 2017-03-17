@@ -1,0 +1,24 @@
+<div ui-view
+  ng-style="
+    { 'background-color': 'Gainsboro', 
+      'height': '100%', width:'100%',
+    }"
+>
+  <div class="row" style="margin: 10px; background-color: white; color: orange">
+	  <h1>차트</h1>
+	</div>
+
+	<div class="row">
+	  <chart-list chart="$ctrl.chart"></chart-list>
+	</div>
+
+	<!-- 재생 버튼 -->
+  <audio 
+    id="audioplayer"
+    src="/stream/{{$ctrl.state.song}}" 
+    type="audio/mp3" 
+    controls="controls"
+    autoplay> 
+  </audio>
+  
+</div>

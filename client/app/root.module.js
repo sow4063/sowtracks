@@ -13,4 +13,16 @@ export const root = angular
   	CommonModule
   ])
   .component('root', rootComponent)
+  .config( ($stateProvider, $urlRouterProvider) => {
+    'ngInject';
+
+    $stateProvider
+      .state('/', {
+        url: '/',
+        component: 'root'
+      });
+
+    $urlRouterProvider.otherwise('/');
+    
+  })
   .name
